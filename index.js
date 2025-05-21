@@ -48,10 +48,10 @@ app.post(`/webhook/${token}`, async (req, res) => {
 
 // Set webhook route
 app.get('/', async (req, res) => {
-    const url = 'https://anonimchat-bee.onrender.com';
+    const url = process.env.RENDER_EXTERNAL_URL;
     await bot.setWebHook(`${url}/webhook/${token}`);
     res.send('Webhook set');
 });
 
-const PORT = process.env.PORT || 10000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
